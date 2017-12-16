@@ -12,12 +12,15 @@ class Spaceship:
         self.y_speed = 5
         self.rotation = 0
         self.rotation_speed = 10
-        self.sprite = pyglet.sprite.Sprite(image, self.x, self.y, self.rotation)
-        sprite1 = self.sprite
+        self.sprite = pyglet.sprite.Sprite(image)
 
     def vykresli(self):
-        self.vykreslit = window.clear()
-        sprite.draw()
+        window.clear()
+
+        self.sprite.x = self.x
+        self.sprite.y = self.y
+        self.sprite.rotation = self.rotation
+        self.sprite.draw()
 
     def klik(self,x, y, tlacitko, mod):
         print(tlacitko, mod)
