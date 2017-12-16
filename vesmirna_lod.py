@@ -29,20 +29,25 @@ class Spaceship:
         self.x = self.x + dt * self.x_speed
         self.y = self.y + dt * self.y_speed
         self.rotation = self.rotation + dt * self.rotation_speed
-        def tick(t):
-            movement()
-        pyglet.clock.schedule_interval(tick, 1/30)
 
-    window.push_handlers(
-        on_text=movement,
-        on_draw=vykresli,
-        on_mouse_press=klik,
-    )
 # def center_image(image):
 #         image.anchor_x = image.width/2
 #         image.anchor_y = image.height/2
 # center_image(image)
 # picture = pyglet.image.load('rocket.png')
 # rocket = pyglet.sprite.Sprite(picture, , )
+
 ship = Spaceship()
+
+def tick(t):
+    ship.movement()
+
+pyglet.clock.schedule_interval(tick, 1/30)
+
+window.push_handlers(
+    on_text=ship.movement,
+    on_draw=ship.vykresli,
+    on_mouse_press=ship.klik,
+)
+
 pyglet.app.run()
