@@ -28,7 +28,7 @@ class Spaceship:
         self.y = y
 
 
-    def movement(self):
+    def movement(self, dt):
         self.x = self.x + dt * self.x_speed
         self.y = self.y + dt * self.y_speed
         self.rotation = self.rotation + dt * self.rotation_speed
@@ -42,13 +42,12 @@ class Spaceship:
 
 ship = Spaceship()
 
-def tick(t):
-    ship.movement()
+def tick(dt):
+    ship.movement(dt)
 
 pyglet.clock.schedule_interval(tick, 1/30)
 
 window.push_handlers(
-    on_text=ship.movement,
     on_draw=ship.vykresli,
     on_mouse_press=ship.klik,
 )
